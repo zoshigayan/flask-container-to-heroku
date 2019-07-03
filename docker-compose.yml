@@ -1,0 +1,17 @@
+version: "3"
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env/web
+    depends_on:
+      - db
+  db:
+    image: mongo:3.6.13-xenial
+    restart: always
+    ports:
+      - "27017:27017"
+    env_file:
+      - .env/db
